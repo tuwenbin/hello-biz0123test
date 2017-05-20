@@ -1,0 +1,45 @@
+#b_top {
+	
+}
+
+body {
+	background-color: #6A48D7;
+	
+}
+#b_top1 {
+	height: 30px;
+	background-color: #876ED7;
+}
+#b_top11 {
+	width: 70px;
+	padding-left: 1200px;
+	padding-top: 20px;
+}
+#b_top12 {
+	position: absolute;
+	left: 1270px;
+	top:20px;
+}
+
+.font2{
+	font-family: "";
+	font-size: 14px;
+	line-height: 1.5;
+	font-weight: normal;
+	font-weight:bold;
+	color: #144882;
+}
+#b_top2 {
+	height: 50px;
+	background-color: #876ED7;
+}
+
+
+
+#biaoti {
+	color:azure;
+	font-size:30px;
+	font-weight:900;
+	font-family:DFKai-SB;
+	margin-left: 80px;
+}
