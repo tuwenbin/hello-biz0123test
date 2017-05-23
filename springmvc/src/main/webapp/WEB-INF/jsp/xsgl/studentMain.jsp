@@ -1,41 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
 <head>
     <title>Title</title>
-    <meta name="description" content="Static &amp; Dynamic Tables" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+    <meta name="description" content="Static &amp; Dynamic Tables"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css"/>
+    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css"/>
 
     <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-    <link rel="stylesheet" href="assets/css/chosen.min.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css" />
-    <link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css" />
-    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-    <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="assets/css/chosen.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css"/>
+    <link rel="stylesheet" href="assets/css/daterangepicker.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css"/>
+    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css"/>
+    <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
     <script src="assets/js/ace-extra.min.js"></script>
 </head>
 <body class="no-skin">
-<div class="page-content">
+<div class="page-content" align="center">
     <div class="page-header">
         <h1>
             信息展示
@@ -46,11 +46,10 @@
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
-        <div class="col-xs-12" >
+        <div class="col-xs-12">
             <table id="simple-table" class="table  table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th class="detail-col">Details</th>
                     <th>序号</th>
                     <th>学号</th>
                     <th class="hidden-480">姓名</th>
@@ -70,19 +69,13 @@
                     <th class="hidden-480">修改</th>
                     <th class="hidden-480">删除</th>
                     <th></th>
-                </tr><% int i=0;int j=100; %>
+                </tr>
+                <% int i = 0;
+                    int j = 100; %>
                 </thead>
                 <tbody>
                 <c:forEach items="${studentVOList}" varStatus="s" var="student">
                     <tr>
-                        <td class="center">
-                            <div class="action-buttons">
-                                <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                    <i class="ace-icon fa fa-angle-double-down"></i>
-                                    <span class="sr-only">Details</span>
-                                </a>
-                            </div>
-                        </td>
                         <td>
                                 ${s.index+1}
                         </td>
@@ -112,67 +105,76 @@
                             <% i++; %>
                             <h4 class="pink">
                                 <i class="ace-icon fa fa-hand-o-right green"></i>
-                                <a href="#modal-form<%=i%>" role="button" class="blue" data-toggle="modal" id="luru"> 录入 </a>
+                                <a href="#modal-form<%=i%>" role="button" class="blue" data-toggle="modal" id="luru">
+                                    录入 </a>
                             </h4>
 
                             <div id="modal-form<%=i%>" class="modal" tabindex="-1">
                                 <div class="modal-dialog">
                                     <form action="<%=basePath%>saveScore.action">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="blue bigger">成绩录入</h4>
-                                        </div>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+                                                <h4 class="blue bigger">成绩录入</h4>
+                                            </div>
 
-                                        <div class="modal-body">
-                                            <div class="row">
+                                            <div class="modal-body">
+                                                <div class="row">
 
-                                                <div class="col-xs-12 col-sm-7">
+                                                    <div class="col-xs-12 col-sm-7">
 
-                                                    <div>姓名 ：${student.name}</div>
-                                                    <div><input type="hidden" name="stuId" value="${student.id}"></div>
+                                                        <div>姓名 ：${student.name}</div>
+                                                        <div><input type="hidden" name="stuId" value="${student.id}">
+                                                        </div>
 
-                                                    <div class="space-4"></div>
+                                                        <div class="space-4"></div>
 
-                                                    <div>
-                                                        <c:choose>
-                                                            <c:when test="${student.subjectVOList.size()  > 0  }" >
-                                                                <c:forEach var="num" begin="0" end="${student.subjectVOList.size()-1}">
-                                                                    <div class="form-group">
-                                                                        <label for="form-field-username">${student.subjectVOList.get(num).name}</label>
+                                                        <div>
+                                                            <c:choose>
+                                                                <c:when test="${student.subjectVOList.size()  > 0  }">
+                                                                    <c:forEach var="num" begin="0"
+                                                                               end="${student.subjectVOList.size()-1}">
+                                                                        <div class="form-group">
+                                                                            <label for="form-field-username">${student.subjectVOList.get(num).name}</label>
 
-                                                                        <div>
-                                                                            <c:forEach items="${student.scores}" var="score">
-                                                                                <c:if test="${score.subjectVO.name eq student.subjectVOList.get(num).name}">
-                                                                                    <div style="display: none">${score.mark}</div>
-                                                                                </c:if>
-                                                                            </c:forEach>
-                                                                            <input type="text" id="form-field-username" name="${student.subjectVOList.get(num).name}" placeholder="" value="" class="novalue"/>
+                                                                            <div>
+                                                                                <c:forEach items="${student.scores}"
+                                                                                           var="score">
+                                                                                    <c:if test="${score.subjectVO.name eq student.subjectVOList.get(num).name}">
+                                                                                        <div style="display: none">${score.mark}</div>
+                                                                                    </c:if>
+                                                                                </c:forEach>
+                                                                                <input type="text"
+                                                                                       id="form-field-username"
+                                                                                       name="${student.subjectVOList.get(num).name}"
+                                                                                       placeholder="" value=""
+                                                                                       class="novalue"/>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </c:forEach>
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <div>你还没有选择任何课程，请先去选课！</div>
-                                                            </c:otherwise>
-                                                        </c:choose>
+                                                                    </c:forEach>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <div>你还没有选择任何课程，请先去选课！</div>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="modal-footer">
-                                            <button class="btn btn-sm" data-dismiss="modal">
-                                                <i class="ace-icon fa fa-times"></i>
-                                                Cancel
-                                            </button>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-sm" data-dismiss="modal">
+                                                    <i class="ace-icon fa fa-times"></i>
+                                                    Cancel
+                                                </button>
 
-                                            <button class="btn btn-sm btn-primary" type="submit">
-                                                <i class="ace-icon fa fa-check"></i>
-                                                Save
-                                            </button>
+                                                <button class="btn btn-sm btn-primary" type="submit" name="luruchengji">
+                                                    <i class="ace-icon fa fa-check"></i>
+                                                    Save
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
                                     </form>
                                 </div>
                             </div>
@@ -180,7 +182,7 @@
                         <td>
                             <% j++; %>
                             <h4 class="pink">
-                                <a href="#modal-form<%=j%>" role="button" class="xuanke" data-toggle="modal" > 选课 </a>
+                                <a href="#modal-form<%=j%>" role="button" class="xuanke" data-toggle="modal"> 选课 </a>
                             </h4>
 
                             <div id="modal-form<%=j%>" class="modal" tabindex="-1">
@@ -197,41 +199,45 @@
                                                     <div class="col-xs-12 col-sm-7">
 
                                                         <div>姓名 ：${student.name}</div>
-                                                        <div><input type="hidden" name="stuId" value="${student.id}"></div>
+                                                        <div><input type="hidden" name="stuId" value="${student.id}">
+                                                        </div>
 
                                                         <div class="space-4"></div>
 
                                                         <div>
-                                                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                                            <table id="dynamic-table"
+                                                                   class="table table-striped table-bordered table-hover">
                                                                 <thead>
-                                                                    <tr>
-                                                                        <th>课程</th>
-                                                                        <th>是否选择</th>
-                                                                        <th>选择课程</th>
-                                                                    </tr>
+                                                                <tr>
+                                                                    <th>课程</th>
+                                                                    <th>是否选择</th>
+                                                                    <th>选择课程</th>
+                                                                </tr>
                                                                 </thead>
 
                                                                 <tbody>
-                                                                        <c:forEach items="${subjectVOList}" var="subject">
-                                                                            <tr>
-                                                                                <td>${subject.name}</td>
-                                                                                <td>
-                                                                                    <c:if test="${student.subjectVOList.size() > 0}">
-                                                                                        <c:forEach var="num" begin="0" end="${student.subjectVOList.size()-1}">
-                                                                                            <c:if test="${student.subjectVOList.get(num).name eq subject.name}">
-                                                                                                <div style="display: none">已选择</div>
-                                                                                            </c:if>
-                                                                                        </c:forEach>
+                                                                <c:forEach items="${subjectVOList}" var="subject">
+                                                                    <tr>
+                                                                        <td>${subject.name}</td>
+                                                                        <td>
+                                                                            <c:if test="${student.subjectVOList.size() > 0}">
+                                                                                <c:forEach var="num" begin="0"
+                                                                                           end="${student.subjectVOList.size()-1}">
+                                                                                    <c:if test="${student.subjectVOList.get(num).name eq subject.name}">
+                                                                                        <div style="display: none">已选择
+                                                                                        </div>
                                                                                     </c:if>
-                                                                                    <div class="noSelect">未选择</div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div style="display: none">${subject.sid}</div>
-                                                                                    <a  class="selectSubject">选课</a>
-                                                                                    <a  class="noselectSubject">取消</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </c:forEach>
+                                                                                </c:forEach>
+                                                                            </c:if>
+                                                                            <div class="noSelect">未选择</div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div style="display: none">${subject.sid}</div>
+                                                                            <a class="selectSubject">选课</a>
+                                                                            <a class="noselectSubject">取消</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -251,7 +257,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td><a href="<%=basePath%>toStudentUpdateForm.action?stuId=${student.id}" style="margin-top: 10px;padding-top: 10px;">修改</a></td>
+                        <td><a href="<%=basePath%>toStudentUpdateForm.action?stuId=${student.id}"
+                               style="margin-top: 10px;padding-top: 10px;">修改</a></td>
                         <td><a href="<%=basePath%>deleteStudent.action?stuId=${student.id}">删除</a></td>
                     </tr>
                 </c:forEach>
@@ -259,6 +266,9 @@
             </table>
         </div><!-- /.span -->
     </div>
+    <br><br>
+
+    <%@include file="/common/page.jsp" %>
 </div>
 </body>
 <script src="assets/js/jquery-2.1.4.min.js"></script>
@@ -269,7 +279,7 @@
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 <script src="assets/js/bootstrap.min.js"></script>
 
@@ -289,17 +299,17 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-    jQuery(function($) {
+    jQuery(function ($) {
         //initiate dataTables plugin
         var myTable =
             $('#dynamic-table')
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                .DataTable( {
+                .DataTable({
                     bAutoWidth: false,
                     "aoColumns": [
-                        { "bSortable": false },
-                        null, null,null, null, null,
-                        { "bSortable": false }
+                        {"bSortable": false},
+                        null, null, null, null, null,
+                        {"bSortable": false}
                     ],
                     "aaSorting": [],
 
@@ -324,13 +334,12 @@
                     select: {
                         style: 'multi'
                     }
-                } );
-
+                });
 
 
         $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
-        new $.fn.dataTable.Buttons( myTable, {
+        new $.fn.dataTable.Buttons(myTable, {
             buttons: [
                 {
                     "extend": "colvis",
@@ -366,8 +375,8 @@
                     message: 'This print was produced using the Print button for DataTables'
                 }
             ]
-        } );
-        myTable.buttons().container().appendTo( $('.tableTools-container') );
+        });
+        myTable.buttons().container().appendTo($('.tableTools-container'));
 
         //style the message box
         var defaultCopyAction = myTable.button(1).action();
@@ -383,7 +392,7 @@
             defaultColvisAction(e, dt, button, config);
 
 
-            if($('.dt-button-collection > .dropdown-menu').length == 0) {
+            if ($('.dt-button-collection > .dropdown-menu').length == 0) {
                 $('.dt-button-collection')
                     .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
                     .find('a').attr('href', '#').wrap("<li />")
@@ -393,30 +402,25 @@
 
         ////
 
-        setTimeout(function() {
-            $($('.tableTools-container')).find('a.dt-button').each(function() {
+        setTimeout(function () {
+            $($('.tableTools-container')).find('a.dt-button').each(function () {
                 var div = $(this).find(' > div').first();
-                if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                if (div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
                 else $(this).tooltip({container: 'body', title: $(this).text()});
             });
         }, 500);
 
 
-
-
-
-        myTable.on( 'select', function ( e, dt, type, index ) {
-            if ( type === 'row' ) {
-                $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+        myTable.on('select', function (e, dt, type, index) {
+            if (type === 'row') {
+                $(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
             }
-        } );
-        myTable.on( 'deselect', function ( e, dt, type, index ) {
-            if ( type === 'row' ) {
-                $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+        });
+        myTable.on('deselect', function (e, dt, type, index) {
+            if (type === 'row') {
+                $(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
             }
-        } );
-
-
+        });
 
 
         /////////////////////////////////
@@ -424,54 +428,51 @@
         $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
 
         //select/deselect all rows according to table header checkbox
-        $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+        $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function () {
             var th_checked = this.checked;//checkbox inside "TH" table header
 
-            $('#dynamic-table').find('tbody > tr').each(function(){
+            $('#dynamic-table').find('tbody > tr').each(function () {
                 var row = this;
-                if(th_checked) myTable.row(row).select();
+                if (th_checked) myTable.row(row).select();
                 else  myTable.row(row).deselect();
             });
         });
 
         //select/deselect a row when the checkbox is checked/unchecked
-        $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+        $('#dynamic-table').on('click', 'td input[type=checkbox]', function () {
             var row = $(this).closest('tr').get(0);
-            if(this.checked) myTable.row(row).deselect();
+            if (this.checked) myTable.row(row).deselect();
             else myTable.row(row).select();
         });
 
 
-
-        $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+        $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
             e.stopImmediatePropagation();
             e.stopPropagation();
             e.preventDefault();
         });
 
 
-
         //And for the first simple table, which doesn't have TableTools or dataTables
         //select/deselect all rows according to table header checkbox
         var active_class = 'active';
-        $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+        $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
             var th_checked = this.checked;//checkbox inside "TH" table header
 
-            $(this).closest('table').find('tbody > tr').each(function(){
+            $(this).closest('table').find('tbody > tr').each(function () {
                 var row = this;
-                if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
                 else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
             });
         });
 
         //select/deselect a row when the checkbox is checked/unchecked
-        $('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+        $('#simple-table').on('click', 'td input[type=checkbox]', function () {
             var $row = $(this).closest('tr');
-            if($row.is('.detail-row ')) return;
-            if(this.checked) $row.addClass(active_class);
+            if ($row.is('.detail-row ')) return;
+            if (this.checked) $row.addClass(active_class);
             else $row.removeClass(active_class);
         });
-
 
 
         /********************************/
@@ -488,23 +489,18 @@
             var off2 = $source.offset();
             //var w2 = $source.width();
 
-            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+            if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
             return 'left';
         }
 
 
-
-
         /***************/
-        $('.show-details-btn').on('click', function(e) {
+        $('.show-details-btn').on('click', function (e) {
             e.preventDefault();
             $(this).closest('tr').next().toggleClass('open');
             $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
         });
         /***************/
-
-
-
 
 
         /**
@@ -530,7 +526,7 @@
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 <script src="assets/js/bootstrap.min.js"></script>
 
@@ -561,55 +557,55 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-    jQuery(function($) {
-        $('#id-disable-check').on('click', function() {
+    jQuery(function ($) {
+        $('#id-disable-check').on('click', function () {
             var inp = $('#form-input-readonly').get(0);
-            if(inp.hasAttribute('disabled')) {
-                inp.setAttribute('readonly' , 'true');
+            if (inp.hasAttribute('disabled')) {
+                inp.setAttribute('readonly', 'true');
                 inp.removeAttribute('disabled');
-                inp.value="This text field is readonly!";
+                inp.value = "This text field is readonly!";
             }
             else {
-                inp.setAttribute('disabled' , 'disabled');
+                inp.setAttribute('disabled', 'disabled');
                 inp.removeAttribute('readonly');
-                inp.value="This text field is disabled!";
+                inp.value = "This text field is disabled!";
             }
         });
 
 
-        if(!ace.vars['touch']) {
-            $('.chosen-select').chosen({allow_single_deselect:true});
+        if (!ace.vars['touch']) {
+            $('.chosen-select').chosen({allow_single_deselect: true});
             //resize the chosen on window resize
 
             $(window)
                 .off('resize.chosen')
-                .on('resize.chosen', function() {
-                    $('.chosen-select').each(function() {
+                .on('resize.chosen', function () {
+                    $('.chosen-select').each(function () {
                         var $this = $(this);
                         $this.next().css({'width': $this.parent().width()});
                     })
                 }).trigger('resize.chosen');
             //resize chosen on sidebar collapse/expand
-            $(document).on('settings.ace.chosen', function(e, event_name, event_val) {
-                if(event_name != 'sidebar_collapsed') return;
-                $('.chosen-select').each(function() {
+            $(document).on('settings.ace.chosen', function (e, event_name, event_val) {
+                if (event_name != 'sidebar_collapsed') return;
+                $('.chosen-select').each(function () {
                     var $this = $(this);
                     $this.next().css({'width': $this.parent().width()});
                 })
             });
 
 
-            $('#chosen-multiple-style .btn').on('click', function(e){
+            $('#chosen-multiple-style .btn').on('click', function (e) {
                 var target = $(this).find('input[type=radio]');
                 var which = parseInt(target.val());
-                if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+                if (which == 2) $('#form-field-select-4').addClass('tag-input-style');
                 else $('#form-field-select-4').removeClass('tag-input-style');
             });
         }
 
 
-        $('[data-rel=tooltip]').tooltip({container:'body'});
-        $('[data-rel=popover]').popover({container:'body'});
+        $('[data-rel=tooltip]').tooltip({container: 'body'});
+        $('[data-rel=popover]').popover({container: 'body'});
 
         autosize($('textarea[class*=autosize]'));
 
@@ -618,74 +614,76 @@
             limitText: 'max allowed : %n.'
         });
 
-        $.mask.definitions['~']='[+-]';
+        $.mask.definitions['~'] = '[+-]';
         $('.input-mask-date').mask('99/99/9999');
         $('.input-mask-phone').mask('(999) 999-9999');
         $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
-        $(".input-mask-product").mask("a*-999-a999",{placeholder:" ",completed:function(){alert("You typed the following: "+this.val());}});
+        $(".input-mask-product").mask("a*-999-a999", {
+            placeholder: " ", completed: function () {
+                alert("You typed the following: " + this.val());
+            }
+        });
 
 
-
-        $( "#input-size-slider" ).css('width','200px').slider({
-            value:1,
+        $("#input-size-slider").css('width', '200px').slider({
+            value: 1,
             range: "min",
             min: 1,
             max: 8,
             step: 1,
-            slide: function( event, ui ) {
+            slide: function (event, ui) {
                 var sizing = ['', 'input-sm', 'input-lg', 'input-mini', 'input-small', 'input-medium', 'input-large', 'input-xlarge', 'input-xxlarge'];
                 var val = parseInt(ui.value);
-                $('#form-field-4').attr('class', sizing[val]).attr('placeholder', '.'+sizing[val]);
+                $('#form-field-4').attr('class', sizing[val]).attr('placeholder', '.' + sizing[val]);
             }
         });
 
-        $( "#input-span-slider" ).slider({
-            value:1,
+        $("#input-span-slider").slider({
+            value: 1,
             range: "min",
             min: 1,
             max: 12,
             step: 1,
-            slide: function( event, ui ) {
+            slide: function (event, ui) {
                 var val = parseInt(ui.value);
-                $('#form-field-5').attr('class', 'col-xs-'+val).val('.col-xs-'+val);
+                $('#form-field-5').attr('class', 'col-xs-' + val).val('.col-xs-' + val);
             }
         });
 
 
-
         //"jQuery UI Slider"
         //range slider tooltip example
-        $( "#slider-range" ).css('height','200px').slider({
+        $("#slider-range").css('height', '200px').slider({
             orientation: "vertical",
             range: true,
             min: 0,
             max: 100,
-            values: [ 17, 67 ],
-            slide: function( event, ui ) {
-                var val = ui.values[$(ui.handle).index()-1] + "";
+            values: [17, 67],
+            slide: function (event, ui) {
+                var val = ui.values[$(ui.handle).index() - 1] + "";
 
-                if( !ui.handle.firstChild ) {
+                if (!ui.handle.firstChild) {
                     $("<div class='tooltip right in' style='display:none;left:16px;top:-6px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>")
                         .prependTo(ui.handle);
                 }
                 $(ui.handle.firstChild).show().children().eq(1).text(val);
             }
-        }).find('span.ui-slider-handle').on('blur', function(){
+        }).find('span.ui-slider-handle').on('blur', function () {
             $(this.firstChild).hide();
         });
 
 
-        $( "#slider-range-max" ).slider({
+        $("#slider-range-max").slider({
             range: "max",
             min: 1,
             max: 10,
             value: 2
         });
 
-        $( "#slider-eq > span" ).css({width:'90%', 'float':'left', margin:'15px'}).each(function() {
+        $("#slider-eq > span").css({width: '90%', 'float': 'left', margin: '15px'}).each(function () {
             // read initial values from markup and remove that
-            var value = parseInt( $( this ).text(), 10 );
-            $( this ).empty().slider({
+            var value = parseInt($(this).text(), 10);
+            $(this).empty().slider({
                 value: value,
                 range: "min",
                 animate: true
@@ -697,12 +695,12 @@
 
 
         $('#id-input-file-1 , #id-input-file-2').ace_file_input({
-            no_file:'No File ...',
-            btn_choose:'Choose',
-            btn_change:'Change',
-            droppable:false,
-            onchange:null,
-            thumbnail:false //| true | large
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
             //whitelist:'gif|png|jpg|jpeg'
             //blacklist:'exe|php'
             //onchange:''
@@ -729,7 +727,7 @@
 						return true;
 					}*/
             ,
-            preview_error : function(filename, error_code) {
+            preview_error: function (filename, error_code) {
                 //name of the file that failed
                 //error_code values
                 //1 = 'FILE_LOAD_FAILED',
@@ -738,7 +736,7 @@
                 //alert(error_code);
             }
 
-        }).on('change', function(){
+        }).on('change', function () {
             //console.log($(this).data('ace_input_files'));
             //console.log($(this).data('ace_input_method'));
         });
@@ -751,18 +749,16 @@
         //]);
 
 
-
-
         //dynamically change allowed formats by changing allowExt && allowMime function
-        $('#id-file-format').removeAttr('checked').on('change', function() {
+        $('#id-file-format').removeAttr('checked').on('change', function () {
             var whitelist_ext, whitelist_mime;
             var btn_choose
             var no_icon
-            if(this.checked) {
+            if (this.checked) {
                 btn_choose = "Drop images here or click to choose";
                 no_icon = "ace-icon fa fa-picture-o";
 
-                whitelist_ext = ["jpeg", "jpg", "png", "gif" , "bmp"];
+                whitelist_ext = ["jpeg", "jpg", "png", "gif", "bmp"];
                 whitelist_mime = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/bmp"];
             }
             else {
@@ -785,7 +781,7 @@
 
             file_input
                 .off('file.error.ace')
-                .on('file.error.ace', function(e, info) {
+                .on('file.error.ace', function (e, info) {
                     //console.log(info.file_count);//number of selected files
                     //console.log(info.invalid_count);//number of invalid files
                     //console.log(info.error_list);//a list of errors in the following format
@@ -828,14 +824,49 @@
 
         });
 
-        $('#spinner1').ace_spinner({value:0,min:0,max:200,step:10, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
+        $('#spinner1').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 200,
+            step: 10,
+            btn_up_class: 'btn-info',
+            btn_down_class: 'btn-info'
+        })
             .closest('.ace-spinner')
-            .on('changed.fu.spinbox', function(){
+            .on('changed.fu.spinbox', function () {
                 //console.log($('#spinner1').val())
             });
-        $('#spinner2').ace_spinner({value:0,min:0,max:10000,step:100, touch_spinner: true, icon_up:'ace-icon fa fa-caret-up bigger-110', icon_down:'ace-icon fa fa-caret-down bigger-110'});
-        $('#spinner3').ace_spinner({value:0,min:-100,max:100,step:10, on_sides: true, icon_up:'ace-icon fa fa-plus bigger-110', icon_down:'ace-icon fa fa-minus bigger-110', btn_up_class:'btn-success' , btn_down_class:'btn-danger'});
-        $('#spinner4').ace_spinner({value:0,min:-100,max:100,step:10, on_sides: true, icon_up:'ace-icon fa fa-plus', icon_down:'ace-icon fa fa-minus', btn_up_class:'btn-purple' , btn_down_class:'btn-purple'});
+        $('#spinner2').ace_spinner({
+            value: 0,
+            min: 0,
+            max: 10000,
+            step: 100,
+            touch_spinner: true,
+            icon_up: 'ace-icon fa fa-caret-up bigger-110',
+            icon_down: 'ace-icon fa fa-caret-down bigger-110'
+        });
+        $('#spinner3').ace_spinner({
+            value: 0,
+            min: -100,
+            max: 100,
+            step: 10,
+            on_sides: true,
+            icon_up: 'ace-icon fa fa-plus bigger-110',
+            icon_down: 'ace-icon fa fa-minus bigger-110',
+            btn_up_class: 'btn-success',
+            btn_down_class: 'btn-danger'
+        });
+        $('#spinner4').ace_spinner({
+            value: 0,
+            min: -100,
+            max: 100,
+            step: 10,
+            on_sides: true,
+            icon_up: 'ace-icon fa fa-plus',
+            icon_down: 'ace-icon fa fa-minus',
+            btn_up_class: 'btn-purple',
+            btn_down_class: 'btn-purple'
+        });
 
         //$('#spinner1').ace_spinner('disable').ace_spinner('value', 11);
         //or
@@ -850,24 +881,24 @@
             todayHighlight: true
         })
         //show datepicker when clicking on the icon
-            .next().on(ace.click_event, function(){
+            .next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
 
         //or change it into a date range picker
-        $('.input-daterange').datepicker({autoclose:true});
+        $('.input-daterange').datepicker({autoclose: true});
 
 
         //to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
         $('input[name=date-range-picker]').daterangepicker({
-            'applyClass' : 'btn-sm btn-success',
-            'cancelClass' : 'btn-sm btn-default',
+            'applyClass': 'btn-sm btn-success',
+            'cancelClass': 'btn-sm btn-default',
             locale: {
                 applyLabel: 'Apply',
                 cancelLabel: 'Cancel',
             }
         })
-            .prev().on(ace.click_event, function(){
+            .prev().on(ace.click_event, function () {
             $(this).next().focus();
         });
 
@@ -881,16 +912,14 @@
                 up: 'fa fa-chevron-up',
                 down: 'fa fa-chevron-down'
             }
-        }).on('focus', function() {
+        }).on('focus', function () {
             $('#timepicker1').timepicker('showWidget');
-        }).next().on(ace.click_event, function(){
+        }).next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
 
 
-
-
-        if(!ace.vars['old_ie']) $('#date-timepicker1').datetimepicker({
+        if (!ace.vars['old_ie']) $('#date-timepicker1').datetimepicker({
             //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
             icons: {
                 time: 'fa fa-clock-o',
@@ -903,7 +932,7 @@
                 clear: 'fa fa-trash',
                 close: 'fa fa-times'
             }
-        }).next().on(ace.click_event, function(){
+        }).next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
 
@@ -922,10 +951,10 @@
 
 
         var tag_input = $('#form-field-tags');
-        try{
+        try {
             tag_input.tag(
                 {
-                    placeholder:tag_input.attr('placeholder'),
+                    placeholder: tag_input.attr('placeholder'),
                     //enable typeahead by specifying the source array
                     source: ace.vars['US_STATES'],//defined in ace.js >> ace.enable_search_ahead
                     /**
@@ -947,32 +976,32 @@
             var index = $tag_obj.inValues('some tag');
             $tag_obj.remove(index);
         }
-        catch(e) {
+        catch (e) {
             //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
-            tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+            tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
             //autosize($('#form-field-tags'));
         }
 
 
         /////////
         $('#modal-form input[type=file]').ace_file_input({
-            style:'well',
-            btn_choose:'Drop files here or click to choose',
-            btn_change:null,
-            no_icon:'ace-icon fa fa-cloud-upload',
-            droppable:true,
-            thumbnail:'large'
+            style: 'well',
+            btn_choose: 'Drop files here or click to choose',
+            btn_change: null,
+            no_icon: 'ace-icon fa fa-cloud-upload',
+            droppable: true,
+            thumbnail: 'large'
         })
 
         //chosen plugin inside a modal will have a zero width because the select element is originally hidden
         //and its width cannot be determined.
         //so we set the width after modal is show
         $('#modal-form').on('shown.bs.modal', function () {
-            if(!ace.vars['touch']) {
-                $(this).find('.chosen-container').each(function(){
-                    $(this).find('a:first-child').css('width' , '210px');
-                    $(this).find('.chosen-drop').css('width' , '210px');
-                    $(this).find('.chosen-search input').css('width' , '200px');
+            if (!ace.vars['touch']) {
+                $(this).find('.chosen-container').each(function () {
+                    $(this).find('a:first-child').css('width', '210px');
+                    $(this).find('.chosen-drop').css('width', '210px');
+                    $(this).find('.chosen-search input').css('width', '200px');
                 });
             }
         })
@@ -986,7 +1015,7 @@
 
 
 
-        $(document).one('ajaxloadstart.page', function(e) {
+        $(document).one('ajaxloadstart.page', function (e) {
             autosize.destroy('textarea[class*=autosize]')
 
             $('.limiterBox,.autosizejs').remove();
@@ -1000,21 +1029,21 @@
         $(this).click(function () {
             $(".novalue").each(function () {
                 var valuesss = $(this).siblings(":hidden").text();
-                if(valuesss!=null){
-                    $(this).attr("value",valuesss);
+                if (valuesss != null) {
+                    $(this).attr("value", valuesss);
                 }
+
             });
             var stuId = $(this).parent().parent().siblings(":hidden").text();
             //异步请求到delete方法
             $.ajax({
-                url:"toScore.action",
-                type:"get",
-                data:{
-                    stuId : stuId
+                url: "toScore.action",
+                type: "get",
+                data: {
+                    stuId: stuId
                 },
-                success:function(data)
-                {
-                    var json = eval("("+data+")");
+                success: function (data) {
+                    var json = eval("(" + data + ")");
                     alert(json);
                 }
             });
@@ -1025,7 +1054,7 @@
             //把已经有成绩的进行回显
             $(".noSelect").each(function () {
                 var select = $(this).prev().text();
-                if(select){
+                if (select) {
                     $(this).text(select);
                 }
             });
@@ -1036,15 +1065,14 @@
                     var sid = $(this).prev().text();
                     //异步请求到方法
                     $.ajax({
-                        url:"toSubject.action",
-                        type:"get",
-                        data:{
-                            stuId : stuId ,
-                            sid : sid
+                        url: "toSubject.action",
+                        type: "get",
+                        data: {
+                            stuId: stuId,
+                            sid: sid
                         },
-                        success:function(data)
-                        {
-                            if(data!=null){
+                        success: function (data) {
+                            if (data != null) {
                                 alert("选课成功！");
                             }
                         }
@@ -1057,15 +1085,14 @@
                     var sid = $(this).prev().prev().text();
                     //异步请求到方法
                     $.ajax({
-                        url:"toNotSubject.action",
-                        type:"get",
-                        data:{
-                            stuId : stuId ,
-                            sid : sid
+                        url: "toNotSubject.action",
+                        type: "get",
+                        data: {
+                            stuId: stuId,
+                            sid: sid
                         },
-                        success:function(data)
-                        {
-                            if(data!=null){
+                        success: function (data) {
+                            if (data != null) {
                                 alert("取消成功！");
                             }
                         }
@@ -1073,8 +1100,23 @@
                 });
             });
 
+        });
+    });
+
+    //保存录入成绩时，判断文本框内的值
+    $("button[name='luruchengji']").each(function () {
+        $(this).click(function () {
+            var flag =  false;
+            $(".novalue").each(function () {
+                var valuesss = $(this).siblings(":hidden").text();
+
+                if(valuesss==null||valuesss==""){
+                    flag = true;
+                }
+            });
 
         });
     });
+
 </script>
 </html>

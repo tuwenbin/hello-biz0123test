@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface ScoreService {
     //保存成绩
-    public void saveScore(ScoreVO scoreVO);
+    void saveScore(ScoreVO scoreVO);
     //根据学生的学号查出对应学科的成绩
     List<ScoreVO> getScoreByStu_Id(String stu_id);
     //根据课程号查询出选修了此课程学生的成绩
@@ -18,4 +18,5 @@ public interface ScoreService {
     boolean scoreExis(String id, Long sid);
     //根据id删除成绩
     void deleteScore(Long id);
+
 }

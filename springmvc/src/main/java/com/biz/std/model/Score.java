@@ -20,7 +20,7 @@ public class Score{
     /**
      * 引用学生表
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "stu_id")
     private Student student;
 

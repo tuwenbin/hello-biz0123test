@@ -49,7 +49,7 @@
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
                 <div>张三</div>
-                <form id="form-horizontal" class="form-horizontal" role="form" action="<%=basePath%>addStudent.action">
+                <form id="form-horizontal" class="form-horizontal" role="form" action="<%=basePath%>addStudent.action" >
                     <c:forEach items="${scoreVOList}" var="score">
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> ${score.subjectVO.name} </label>

@@ -1,7 +1,9 @@
 package com.biz.xsgl.test;
 
+import com.biz.std.model.Score;
 import com.biz.std.service.StudentService;
 import com.biz.std.vo.ClassVO;
+import com.biz.std.vo.ScoreVO;
 import com.biz.std.vo.StudentVO;
 import com.biz.std.vo.SubjectVO;
 import org.junit.Test;
@@ -10,9 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class StudentVOTest {
     ApplicationContext context = new ClassPathXmlApplicationContext("/spring-jpa.xml");
@@ -44,8 +44,12 @@ public class StudentVOTest {
     @Test
     public void testFindById(){
         StudentVO studentVO = this.studentService.getStudentById("001");
+        Set<ScoreVO> scoreVOSet = studentVO.getScores();
+        Iterator<ScoreVO> it = scoreVOSet.iterator();
+
         System.out.println(studentVO.getId());
     }
+
 
     @Test
     public void testFindStudentListByCid(){

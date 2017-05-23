@@ -7,11 +7,10 @@ import com.biz.std.model.Subject;
 import com.biz.std.repositories.StudentRepository;
 import com.biz.std.service.StudentService;
 import com.biz.std.utils.BeanUtilsBean;
-import com.biz.std.vo.ClassVO;
-import com.biz.std.vo.ScoreVO;
-import com.biz.std.vo.StudentVO;
-import com.biz.std.vo.SubjectVO;
+import com.biz.std.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +65,17 @@ public class StudentServiceImpl implements StudentService{
             }
             //转化成绩
             Set<ScoreVO> scoreVOSet = new HashSet<ScoreVO>();
+            Set<Score> scoreSetPO = studentPO.getScores();
+            for(Score scorePO:scoreSetPO){
+                ScoreVO scoreVO = new ScoreVO();
+                BeanUtilsBean.VOConvertPO(scoreVO,scorePO);
+                //转化学科
+                Subject subjectPO = scorePO.getSubject();
+                SubjectVO subjectVO = new SubjectVO();
+                BeanUtilsBean.VOConvertPO(subjectVO,subjectPO);
+                scoreVO.setSubjectVO(subjectVO);
+                scoreVOSet.add(scoreVO);
+            }
 
             studentVO.setScores(scoreVOSet);
             studentVO.setSubjectVOList(subjectListVO);
@@ -173,4 +183,56 @@ public class StudentServiceImpl implements StudentService{
 
         return studentVOList;
     }
+
+    public PageStu findPageRecords(String num) {
+        //传过来的页码
+        int pageNum = 1;
+        if(num != null && !num.trim().equals("")){
+            pageNum = Integer.parseInt(num);
+        }
+        //得到总记录数
+        int totalRecords =  this.studentRepository.findAll().size();
+        PageStu pageStu = new PageStu(pageNum,totalRecords);
+
+        Page<Student> studentPage = this.studentRepository.findAllStudent(new PageRequest(pageStu.getCurrentPageNum()-1,pageStu.getPageSize(),null));
+        List<Student> studentList = studentPage.getContent();
+        Iterator<Student> studentPOList = studentList.iterator();
+        List<StudentVO> studentVOList = new ArrayList<StudentVO>();
+
+        while (studentPOList.hasNext()){
+            StudentVO studentVO = new StudentVO();
+            ClassVO classVO = new ClassVO();
+            Student studentPO = studentPOList.next();
+            BeanUtilsBean.VOConvertPO(classVO,studentPO.getAclass());
+            studentVO.setClassVO(classVO);
+            BeanUtilsBean.VOConvertPO(studentVO,studentPO);
+            List<Subject> subjectListPO =  studentPO.getSubjects();
+            List<SubjectVO> subjectListVO = new ArrayList<SubjectVO>();
+            for(Subject subjectPO:subjectListPO){
+                SubjectVO subjectVO = new SubjectVO();
+                BeanUtilsBean.VOConvertPO(subjectVO,subjectPO);
+                subjectListVO.add(subjectVO);
+            }
+            //转化成绩
+            Set<ScoreVO> scoreVOSet = new HashSet<ScoreVO>();
+            Set<Score> scoreSetPO = studentPO.getScores();
+            for(Score scorePO:scoreSetPO){
+                ScoreVO scoreVO = new ScoreVO();
+                BeanUtilsBean.VOConvertPO(scoreVO,scorePO);
+                //转化学科
+                Subject subjectPO = scorePO.getSubject();
+                SubjectVO subjectVO = new SubjectVO();
+                BeanUtilsBean.VOConvertPO(subjectVO,subjectPO);
+                scoreVO.setSubjectVO(subjectVO);
+                scoreVOSet.add(scoreVO);
+            }
+
+            studentVO.setScores(scoreVOSet);
+            studentVO.setSubjectVOList(subjectListVO);
+            studentVOList.add(studentVO);
+        }
+        pageStu.setRecords(studentVOList);
+        return pageStu;
+    }
+
 }

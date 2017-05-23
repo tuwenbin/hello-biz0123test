@@ -1,18 +1,17 @@
 package com.biz.std.controller;
 
-import com.biz.std.model.Subject;
 import com.biz.std.service.ClassService;
 import com.biz.std.service.ScoreService;
 import com.biz.std.service.StudentService;
 import com.biz.std.service.SubjectService;
 import com.biz.std.utils.StringUtile;
-import com.biz.std.vo.ClassVO;
-import com.biz.std.vo.ScoreVO;
-import com.biz.std.vo.StudentVO;
-import com.biz.std.vo.SubjectVO;
+import com.biz.std.vo.*;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,9 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.awt.print.Pageable;
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class StudentController {
@@ -39,6 +41,7 @@ public class StudentController {
     private String stuId;
     //课程id
     private String sid;
+    private String num;
 
     public String getStuId() {
         return stuId;
@@ -56,14 +59,24 @@ public class StudentController {
         this.sid = sid;
     }
 
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
     /**
      * 跳转到学生列表页面
      * @return
      */
     @RequestMapping("/toStudentMain")
-    public ModelAndView toStudentMain(){
+    public ModelAndView toStudentMain(String num){
         ModelAndView mav = new ModelAndView();
-        List<StudentVO> studentVOList = this.studentService.findStudentList();
+        //得到分页记录
+        PageStu page = this.studentService.findPageRecords(num);
+        List<StudentVO> studentVOList = page.getRecords();
         for(StudentVO studentVO:studentVOList){
             //求平均分
             Float grade_avg = 0F;
@@ -79,6 +92,7 @@ public class StudentController {
            }
         }
         List<SubjectVO> subjectVOList =  this.subjectService.findSubjectVOList();
+        mav.addObject("page",page);
         mav.addObject("studentVOList",studentVOList);
         mav.addObject("subjectVOList",subjectVOList);
         mav.setViewName("/xsgl/studentMain");
@@ -276,16 +290,13 @@ public class StudentController {
                 }
             }else {
                 //成绩表中没有记录
-                if(scoreVOList.size()<=0){
-                    //成绩表中没有记录
-                    ScoreVO scoreVO1 = new ScoreVO();
+                ScoreVO scoreVO1 = new ScoreVO();
 
-                    String mark = request.getParameter(subjectVO.getName());
-                    scoreVO1.setMark(Float.parseFloat(mark));
-                    scoreVO1.setStudentVO(studentVO);
-                    scoreVO1.setSubjectVO(subjectVO);
-                    this.scoreService.saveScore(scoreVO1);
-                }
+                String mark = request.getParameter(subjectVO.getName());
+                scoreVO1.setMark(Float.parseFloat(mark));
+                scoreVO1.setStudentVO(studentVO);
+                scoreVO1.setSubjectVO(subjectVO);
+                this.scoreService.saveScore(scoreVO1);
             }
         }
         return "redirect:/toStudentMain.action";
@@ -320,24 +331,32 @@ public class StudentController {
     @RequestMapping("/toNotSubject")
     public String tonotoSubject(String stuId, String sid){
         Long s_id = Long.parseLong(sid);
+        Long score_id = 0L;
         StudentVO studentVO = this.studentService.getStudentById(stuId);
+        List<ScoreVO> scoreVOList = this.scoreService.getScoreByStu_Id(stuId);
         List<SubjectVO> subjectVOList = studentVO.getSubjectVOList();
-        //得到要取消的课程
-        for(int i=0;i<subjectVOList.size();i++){
-            SubjectVO subjectVO = subjectVOList.get(i);
-            if(subjectVO.getSid()==s_id){
-                //删除成绩记录
-                List<ScoreVO> scoreVOList = this.scoreService.getScoreByStu_Id(stuId);
-                for(ScoreVO scoreVO:scoreVOList){
-                    if(scoreVO.getSubjectVO().getSid().equals(s_id)){
-                        this.scoreService.deleteScore(scoreVO.getId());
+        if(subjectVOList.size()>0){
+            if(subjectVOList.size()>0){
+                for(int i=0;i<subjectVOList.size();i++){
+                    SubjectVO subjectVO = subjectVOList.get(i);
+                    if(subjectVO.getSid()==s_id){
+                        //删除成绩记录
+                        if(scoreVOList.size()>0){
+                            for(ScoreVO scoreVO : scoreVOList){
+                                if(scoreVO.getSubjectVO().getSid().equals(s_id)){
+                                    score_id = scoreVO.getId();
+                                }
+                            }
+                        }
+                        subjectVOList.remove(i);
                     }
                 }
-                subjectVOList.remove(i);
             }
         }
         studentVO.setSubjectVOList(subjectVOList);
         this.studentService.saveStudent(studentVO);
+        this.scoreService.deleteScore(score_id);
         return "success";
+
     }
 }

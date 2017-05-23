@@ -47,6 +47,12 @@ public class Student{
     private Class aclass;
 
     /**
+     * 和成绩的关联
+     */
+    @OneToMany(cascade = CascadeType.MERGE,mappedBy="student",fetch = FetchType.EAGER)
+    private Set<Score> scores;
+
+    /**
      * 出生日期
      */
     @Column(length = 20)
@@ -106,6 +112,14 @@ public class Student{
 
     public List<Subject> getSubjects() {
         return subjects;
+    }
+
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
     }
 
     public void setSubjects(List<Subject> subjects) {

@@ -1,6 +1,8 @@
 package com.biz.std.repositories;
 
 import com.biz.std.model.Student;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -41,4 +43,12 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 
     @Query(value = "select s from Student s  order by s.aclass.cid")
     List<Student> findAllByStudentOrderByClass();
+
+    /**
+     * 分页显示学生
+     */
+    @Query(value = "select s from Student s  order by s.aclass.cid")
+    Page<Student> findAllStudent(Pageable pageable);
+
+
 }

@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <section id="content">
-        <form action="<%=basePath%>login.action">
+        <form action="<%=basePath%>login.action" method="post">
             <h1>学生信息管理系统</h1>
             <div>
                 <input type="text" placeholder="Username" required="" id="username" name="username"/>

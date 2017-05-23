@@ -57,4 +57,10 @@ public class ScoreVOTest {
         System.out.println(scoreVOList.size());
     }
 
+    @Test
+    public void testdelete(){
+        this.scoreService.deleteScore(24L);
+    }
+
+
 }

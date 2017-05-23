@@ -10,9 +10,15 @@ import com.biz.std.vo.StudentVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.awt.print.PageFormat;
+import java.awt.print.Pageable;
+import java.awt.print.Printable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,6 +161,13 @@ public class ResiTest {
 
     @Test
     public void deleteByStu_id(){
-        this.scoreRepository.delete(1L);
+        this.scoreRepository.delete(15L);
+    }
+
+    @Test
+    public void findAllStudent(){
+
+        Page<Student> students = this.studentRepository.findAllStudent(new PageRequest(1,3,null));
+        System.out.println(students);
     }
 }

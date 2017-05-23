@@ -1,9 +1,9 @@
 package com.biz.std.service;
 
 
+import com.biz.std.vo.PageStu;
 import com.biz.std.vo.StudentVO;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -25,4 +25,6 @@ public interface StudentService {
     List<StudentVO> findStudentListByCid(Long cid);
     //根据课程id查询出所有的学生
     List<StudentVO> findStudentListBySid(Long sid);
+    //分页查询学生
+    PageStu findPageRecords(String num);
 }

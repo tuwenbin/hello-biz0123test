@@ -99,7 +99,11 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     public void deleteScore(Long id) {
-        this.scoreRepository.delete(id);
+        boolean flag = this.scoreRepository.exists(id);
+        if(flag){
+            this.scoreRepository.delete(id);
+        }
+
     }
 
 
