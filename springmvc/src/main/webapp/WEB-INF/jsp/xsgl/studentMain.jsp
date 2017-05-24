@@ -1108,13 +1108,18 @@
         $(this).click(function () {
             var flag =  false;
             $(".novalue").each(function () {
-                var valuesss = $(this).siblings(":hidden").text();
-
+                var valuesss = $(this).val();
                 if(valuesss==null||valuesss==""){
+                    flag = true;
+                };
+                if(valuesss<0||valuesss>150){
                     flag = true;
                 }
             });
-
+            if(flag){
+                alert("请检查你输入的成绩，必须为1-150之间");
+                return false;
+            };
         });
     });
 

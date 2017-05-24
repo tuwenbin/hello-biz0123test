@@ -79,5 +79,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:unknown" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:unknown" level="project" />
     <orderEntry type="library" name="Maven: hsqldb:hsqldb:1.8.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.ckfinder:CKFinderPlugin-FileEditor:4.2.6" level="project" />
   </component>
 </module>

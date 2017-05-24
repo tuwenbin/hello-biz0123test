@@ -312,13 +312,22 @@ public class StudentController {
     @RequestMapping("/toSubject")
     public String toSubject(String stuId, String sid){
         Long s_id = Long.parseLong(sid);
+        boolean flag = true;
         StudentVO studentVO = this.studentService.getStudentById(stuId);
         List<SubjectVO> subjectVOList = studentVO.getSubjectVOList();
-        //得到要保存的课程
-        SubjectVO subjectVO = this.subjectService.getSubjectVOById(s_id);
-        subjectVOList.add(subjectVO);
-        studentVO.setSubjectVOList(subjectVOList);
-        this.studentService.saveStudent(studentVO);
+        //此课程是否已经被选择
+        for(SubjectVO subjectVO:subjectVOList){
+            if(subjectVO.getSid()==s_id){
+                flag = false;
+            }
+        }
+        if(flag){
+            //得到要保存的课程
+            SubjectVO subjectVO = this.subjectService.getSubjectVOById(s_id);
+            subjectVOList.add(subjectVO);
+            studentVO.setSubjectVOList(subjectVOList);
+            this.studentService.saveStudent(studentVO);
+        }
         return "success";
     }
     /**
