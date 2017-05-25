@@ -29,7 +29,7 @@ public class Subject {
     /**
      * 和学生之间多对多映射
      */
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "subjects")
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "subjects")
     private List<Student> students;
 
     public Long getSid() {

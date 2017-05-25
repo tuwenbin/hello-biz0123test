@@ -120,8 +120,13 @@ public class SubjectController {
     @RequestMapping("/deleteSubject")
     public ModelAndView delete(String sid){
         ModelAndView mav = new ModelAndView();
-        this.subjectService.deleteSubjectVO(Long.parseLong(sid));
-        mav.setViewName("redirect:/toSubjectMain.action");
-        return mav;
+        try {
+            this.subjectService.deleteSubjectVO(Long.parseLong(sid));
+            mav.setViewName("redirect:/toSubjectMain.action");
+            return mav;
+        }catch (Exception e){
+            mav.setViewName("redirect:/toSubjectMain.action");
+            return mav;
+        }
     }
 }

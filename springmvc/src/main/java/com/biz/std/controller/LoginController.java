@@ -22,7 +22,7 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
         UserVO userVO =  (UserVO) request.getSession().getAttribute("user");
         mav.addObject("user",userVO);
-        mav.setViewName("/frame/mainIndex");
+        mav.setViewName("/frame/index");
         return mav;
     }
     /**

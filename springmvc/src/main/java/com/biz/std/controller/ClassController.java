@@ -8,9 +8,11 @@ import com.biz.std.vo.ScoreVO;
 import com.biz.std.vo.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -127,8 +129,19 @@ public class ClassController {
     @RequestMapping("/deleteClass")
     public ModelAndView delete(String cid){
         ModelAndView mav = new ModelAndView();
-        this.classService.deleteClass(Long.parseLong(cid));
-        mav.setViewName("redirect:/toClassMain.action");
-        return mav;
+        //班级和学生之前有关联，报异常！
+        try {
+            this.classService.deleteClass(Long.parseLong(cid));
+            mav.setViewName("redirect:/toClassMain.action");
+            return mav;
+        }catch (Exception e){
+            List<String> stringList = new ArrayList<String>();
+            String error = "请先删除该班级的学生";
+            stringList.add(error);
+            mav.addObject("stringList",stringList);
+            mav.addObject("error",error);
+            mav.setViewName("redirect:/toClassMain.action");
+            return mav;
+        }
     }
 }

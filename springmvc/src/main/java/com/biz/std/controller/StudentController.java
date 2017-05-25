@@ -327,8 +327,9 @@ public class StudentController {
             subjectVOList.add(subjectVO);
             studentVO.setSubjectVOList(subjectVOList);
             this.studentService.saveStudent(studentVO);
+            return "success";
         }
-        return "success";
+        return "exisSubject";
     }
     /**
      * 取消选课
